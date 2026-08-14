@@ -77,13 +77,25 @@ Run-Step "Build backend" {
 }
 
 Run-Step "Deploy backend function" {
+    $deployDir = Join-Path $projectRoot ".deploy\backend"
+
+    if (Test-Path $deployDir) {
+        Remove-Item $deployDir -Recurse -Force
+    }
+
+    New-Item $deployDir -ItemType Directory -Force | Out-Null
+
+    Copy-Item (Join-Path $backendDir "dist") $deployDir -Recurse
+    Copy-Item (Join-Path $backendDir "package.json") $deployDir
+    Copy-Item (Join-Path $backendDir "package-lock.json") $deployDir
+
     yc serverless function version create `
         --function-id $env:BACKEND_FUNCTION_ID `
         --runtime nodejs22 `
         --entrypoint dist/index.handler `
         --memory 128m `
         --execution-timeout 15s `
-        --source-path $backendDir `
+        --source-path $deployDir `
         1> $null
 }
 
