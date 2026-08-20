@@ -1,10 +1,24 @@
-# Backend
-backend/node_modules/
-backend/dist/
+# Dependencies
+**/node_modules/
 
-# Frontend
-frontend/node_modules/
-frontend/dist/
-
+# Environment
 .env
+.env.*
+!.env.example
+
+# Build
+**/dist/
+
+# Deployment artifacts
 .deploy/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

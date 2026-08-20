@@ -5,7 +5,8 @@
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-	"start": "tsx src/index.ts"
+    "start": "tsx src/index.ts",
+	"db:init": "tsx src/db/init.ts"
   },
   "keywords": [],
   "author": "",
@@ -13,7 +14,9 @@
   "description": "",
   "dependencies": {
     "@yandex-cloud/nodejs-sdk": "^2.8.0",
-    "typescript": "^7.0.2"
+    "dotenv": "^17.4.2",
+    "typescript": "^7.0.2",
+    "ydb-sdk": "^5.11.1"
   },
   "devDependencies": {
     "@types/node": "^26.2.0",

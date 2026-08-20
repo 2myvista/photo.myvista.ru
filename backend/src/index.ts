@@ -9,3 +9,11 @@ export const handler = async () => {
         }),
     };
 };
+
+
+import { checkYdbConnection } from './db/check';
+
+checkYdbConnection().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});
